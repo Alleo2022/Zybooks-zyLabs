@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <string.h>
+
+#define MAXC 50     
+
+int main(void) {
+
+    char userText[MAXC];
+    size_t len = 0;
+    
+    for (;;) {  
+
+        if (!fgets (userText, MAXC, stdin))        
+            return 1;
+        
+        userText[(len = strcspn (userText, "\n"))] = 0;     
+        
+        if ((len == 1 && *userText == 'd') ||      
+            strcmp(userText, "Done") == 0  ||      
+            strcmp(userText, "done") == 0) {       
+            return 0;
+        }
+        
+       
+        while (len--)                     
+            putchar (userText[len]);      
+        putchar ('\n');                           
+    }
+    
+    return 0;
+}
