@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int MaxMagnitude(int userVal1, int userVal2, int userVal3) {
+   if((fabs(userVal1) > fabs(userVal2)) && (fabs(userVal1) > fabs(userVal3))){
+      return userVal1;
+   }
+   else if ((fabs(userVal2) > fabs(userVal1)) && (fabs(userVal2) > fabs(userVal3))){
+      return userVal2;
+   }
+   else {
+      return userVal3;
+   }
+}
+
+int main(void) {
+int user1;
+int user2;
+int user3;
+
+scanf ("%d", &user1);
+scanf ("%d", &user2);
+scanf ("%d", &user3);
+
+   printf ("%d\n", MaxMagnitude(user1, user2, user3));
+   return 0;
+}
