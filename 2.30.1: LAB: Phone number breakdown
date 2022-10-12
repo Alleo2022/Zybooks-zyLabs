@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main(void) {
+   long long phoneNumber;
+   /* Add more variables as needed */
+   int areaCode;
+   int prefix;
+   int lineNumber;
+   
+   scanf("%lld",  &phoneNumber);
+   /* Type your code here. */
+   areaCode = phoneNumber / 10000000;
+   prefix = (phoneNumber/10000)%1000;
+   lineNumber = phoneNumber % 10000;
+
+   printf ("(%d) %d-%d\n", areaCode, prefix, lineNumber);
+
+   return 0;
+}
