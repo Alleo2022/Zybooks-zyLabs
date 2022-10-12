@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+void RemoveNonAlpha(char userString[], char userStringAlphaOnly[]) {
+   for (int i = 0; i < strlen(userString); i++) {
+      if ((userString[i] >= 'a' && userString[i] <= 'z') || (userString[i] >= 'A' && userString[i] <= 'Z')){
+         strncat(userStringAlphaOnly, &userString[i], 1);
+      }
+   }
+}
+
+int main(void) {
+
+char str[50];
+char strAlpha[50] = {};
+gets (str);
+
+RemoveNonAlpha(str, strAlpha);
+printf ("%s\n", strAlpha);
+   return (0);
+}
