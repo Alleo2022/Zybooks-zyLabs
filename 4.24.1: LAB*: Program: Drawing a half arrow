@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <math.h>
+
+int main(void) {
+   /* Type your code here. */
+int height;
+int width;
+int column = 0;
+int row = 0;
+
+scanf ("%d %d", &height, &width);
+
+while (row != height) {
+   column = 0;
+   while (column != width) {
+      printf ("*");
+      column++;
+   }
+   printf ("\n");
+   row++;
+}
+int arrow;
+scanf ("%d", &arrow);
+
+while (arrow <= width) 
+   scanf ("%d", &arrow);
+
+row = arrow;
+while (row != 1) {
+   column = row +1;
+   while (column != 1) {
+      printf ("*");
+      column--;
+   }
+   printf ("\n");
+   row--;
+}
+printf ("*\n");
+   return 0;
+}
