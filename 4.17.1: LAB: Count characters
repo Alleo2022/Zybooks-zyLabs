@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+
+char c;
+char s[50];
+
+  int temp = 0, i;
+
+  scanf("%c", &c);
+
+  scanf("%s", &s);    
+
+  for (i = 0; i < strlen(s); ++i) {
+      if (s[i] == c)
+{
+      ++temp;
+
+      }
+
+  }  
+
+  if(temp!=1)
+      printf("%d %c's\n", temp,c);
+  else
+      printf("%d %c\n", temp,c);
+
+   return 0;
+}
