@@ -1,0 +1,121 @@
+#include<stdio.h>
+
+void input(int jersey[],int rating[]) {
+  int i;
+  for(i=1;i<=5;i++) {
+    printf("Enter player %d's jersey number:\n",i);
+    scanf("%d",&jersey[i-1]);
+    printf("Enter player %d's rating:\n",i);
+    scanf("%d",&rating[i-1]);
+    printf("\n");
+  }
+}
+
+void output(int jersey[],int rating[]) {
+ int i;
+ printf("ROSTER\n");
+ for(i=1;i<=5;i++) {
+    printf("Player %d -- Jersey number: %d, Rating: %d\n",i,jersey[i-1],rating[i-1]);
+  }
+printf("\n");
+}
+
+char choice() {
+  char c,d;
+  scanf("%c",&d);
+  printf("MENU\n");
+  printf("u - Update player rating\n");
+  printf("a - Output players above a rating\n");
+  printf("r - Replace player\n");
+  printf("o - Output roster\n");
+  printf("q - Quit\n");
+  printf("\n");
+  printf("Choose an option:");
+  scanf("%c",&c);
+
+return c;
+}
+
+void update(int jersey[],int rating[]) {
+  int jn,r,i;
+
+  printf("Enter a jersey number:\n");
+  scanf("%d",&jn);
+
+  printf("Enter a new rating for player:\n");
+  scanf("%d",&r);
+
+  for(i=0;i<5;i++) {
+    if(jersey[i]==jn) { 
+    rating[i]=r;
+    break;
+    }
+  }
+
+  if(i>=5) {
+   printf("Jersey number not found..!\n");
+   }
+}
+
+void outputAbove(int jersey[],int rating[]) {
+  int rat;
+  printf("Enter a rating:");
+  scanf("%d",&rat);
+
+  printf("ABOVE %d\n",rat);
+    for(int i=0;i<5;i++) {
+      if(rat<rating[i]) {
+      printf("Player %d -- Jersey number: %d, Rating: %d\n",i+1,jersey[i],rating[i]);
+      }
+    }
+printf("\n");
+}
+
+void replace(int jersey[],int rating[]) {
+  int oldj;
+  printf("Enter a jersey number: \n");
+  scanf("%d",&oldj);
+    for(int i=0;i<5;i++) {
+      if(jersey[i]==oldj) {
+      printf("Enter a new jersey number:\n");
+      scanf("%d",&jersey[i]);
+      printf("Enter a rating for the new player:\n");
+      scanf("%d",&rating[i]);
+      printf("\n");
+      break;
+      }
+    }
+}
+
+int main() {
+
+int jersey[5],rating[5];
+char ch='a';
+
+input(jersey,rating);
+output(jersey,rating);
+
+while(ch!='q') {
+ch=choice();
+  switch(ch) {
+    case 'u':
+    update(jersey,rating);
+    break;
+    case 'a':
+    outputAbove(jersey,rating);
+    break;
+    case 'r':
+    replace(jersey,rating);
+    break;
+    case 'o':
+    output(jersey,rating);
+    break;
+    case 'q':
+    printf("\n");
+    break;
+    default:
+    printf("\n");
+    break;
+    }
+  }
+}
