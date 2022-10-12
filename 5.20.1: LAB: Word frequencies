@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+
+int numWord = 0;
+int i;
+scanf("%d", &numWord);
+
+char userWord[numWord][20];
+int frequency[numWord];
+
+for (i = 0; i < numWord; i++) {
+   scanf("%s", &userWord[i]);
+}
+for (i = 0; i < numWord; i++) {
+   frequency[i] = 0;
+   for(int j = 0; j < numWord; j++) {
+      if(strcmp(userWord[i], userWord[j]) == 0) {
+         frequency[i]++;
+      }
+   }
+}
+for (i = 0; i < numWord; i++) {
+   printf("%s - ", userWord[i]);
+   printf("%d\n", frequency[i]);
+}
+
+   return 0;
+}
