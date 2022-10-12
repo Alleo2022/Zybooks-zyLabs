@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+void SortArray(int sortingList[], int numVals) {
+    int i, j, temp;
+    for (i = 0; i < numVals; ++i) {
+        for (j = 0; j < numVals - 1; ++j) {
+            if (sortingList[j] < sortingList[j+1]) {
+                temp = sortingList[j];
+                sortingList[j] = sortingList[j+1];
+                sortingList[j+1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int list[20], numVals, index;
+    scanf("%d", &numVals);
+    for (index = 0; index < numVals; ++index) {
+        scanf("%d", &(list[index]));
+    }
+    SortArray(list, numVals);
+    for (index = 0; index < numVals; ++index) {
+        printf("%d,", list[index]);
+    }
+    printf("\n");
+    return 0;
+}
