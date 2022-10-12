@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include <string.h>
+
+int GetNumOfCharacters(const char userStr[]) {
+   int count = 0;
+
+   for (size_t i = 0; userStr[i] != '\0'; ++i) {
+      ++count;
+   }
+   return count;
+}
+
+int main(void) {
+   char string[50];
+
+   printf("Enter a sentence or phrase:\n");
+   gets(string);
+   printf("\nYou entered: %s\n",string);
+
+   printf("\nNumber of characters: %d\n",GetNumOfCharacters(string) + 1);
+
+   printf("String with no whitespace: ");
+
+   for (size_t i = 0; string[i] != '\0'; ++i) {
+      if (string[i] != ' ')
+         printf("%c",string[i]);
+   }
+   printf("\n\n");
+
+   return 0;
+}
