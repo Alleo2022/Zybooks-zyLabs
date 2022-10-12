@@ -1,0 +1,123 @@
+// main.c
+
+#include <stdio.h>
+#include <string.h>
+
+#include "Product.h"
+
+int main() {
+	char code[20];
+	char productCode[20];
+	strcpy(code, "Apple");
+	double price = 0.40;
+	int num = 3;
+	Product product  = InitProduct(code, price, num);
+
+	// Test 1 - Are instance variables set/returned properly?
+	GetCode(productCode, product);
+	printf("Name: %s\n", productCode);
+	printf("Price: %.2lf\n", GetPrice(product));
+	printf("Count: %d\n\n", GetCount(product));
+
+	// Test 2 - Are instance variables set/returned properly after adding and selling?
+	num = 10;
+	product = AddInventory(num, product);
+	num = 5;
+	product = SellInventory(num, product);
+	GetCode(productCode, product);
+	printf("Name: %s\n", productCode);
+	printf("Price: %.2lf\n", GetPrice(product));
+	printf("Count: %d\n\n", GetCount(product));
+
+	// Test 3 - Do setters work properly?
+	strcpy(code, "Golden Delicious");
+	product = SetCode(code, product);
+	price = 0.55;
+	product = SetPrice(price, product);
+	num = 4;
+	product = SetCount(num, product);
+	GetCode(productCode, product);
+	printf("Name: %s\n", productCode);
+	printf("Price: %.2lf\n", GetPrice(product));
+	printf("Count: %d\n", GetCount(product));
+
+	return 0;
+}
+
+// Product.h
+
+#ifndef PRODUCT_H_
+#define PRODUCT_H_
+
+typedef struct Product_struct {
+   char code[20];
+   double price;
+   int count;
+} Product;
+
+Product InitProduct();
+Product SetCode(char *code, Product product);
+void GetCode(char *productCode, Product product);
+Product SetPrice(double price, Product product);
+double GetPrice(Product product);
+Product SetCount(int count, Product product);
+int GetCount(Product product);
+Product AddInventory(int amt, Product product);
+Product SellInventory(int amt, Product product);
+
+#endif
+
+// Product.c
+
+#include <stdio.h>
+#include <string.h>
+
+#include "Product.h"
+
+Product InitProduct(char* code, double price, int count) {
+   Product newp;
+   SetCode(code, newp);
+   strcpy(newp.code, code);
+   newp = SetPrice(price, newp);
+   newp = SetCount(count, newp);
+   
+   return(newp);
+}
+
+Product SetCode(char *code, Product product) {
+   strcpy(product.code, code);
+   return(product);
+}
+
+void GetCode(char *productCode, Product product) {
+   strcpy(productCode, product.code);
+   return(product);
+}
+
+Product SetPrice(double price, Product product) {
+   product.price = price;
+   return(product);
+}
+
+double GetPrice(Product product) {
+   return(product.price);
+}
+
+Product SetCount(int count, Product product) {
+   product.count = count;
+   return(product);
+}
+
+int GetCount(Product product) {
+   return(product.count);
+}
+
+Product AddInventory(int amt, Product product) {
+   product.count = product.count + amt;
+   return(product);
+}
+
+Product SellInventory(int amt, Product product) {
+   product.count = product.count - amt;
+   return(product);
+}
