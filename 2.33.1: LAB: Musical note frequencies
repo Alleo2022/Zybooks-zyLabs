@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <math.h>
+
+int main(void) {
+
+   double initialKey;
+   double r;
+   double f1;
+   double f2;
+   double f3;
+   double f4;
+
+   /* Type your code here. Include the math library above first. */
+   scanf ("%lf", &initialKey);
+   r = pow (2, (0.0833333333));
+   f1 = initialKey * pow (r, 1);
+   f2 = initialKey * pow (r, 2);
+   f3 = initialKey * pow (r, 3);
+   f4 = initialKey * pow (r, 4);
+
+   
+   printf ( "%0.2lf %0.2lf %0.2lf %0.2lf %0.2lf\n" , initialKey, f1, f2, f3, f4);
+   
+
+   return 0;
+}
