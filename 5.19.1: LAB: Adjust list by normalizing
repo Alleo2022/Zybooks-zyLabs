@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main(void) {
+
+   int arrayMax;
+    float max = -9999;
+    float array[50];
+    int i;
+    int j;
+    int temp;
+
+
+scanf("%d", &arrayMax);
+
+    for(i = 0; i < arrayMax; ++i){
+        scanf("%f", &array[i]);
+    }
+    
+        for(i = 0; i < arrayMax; ++i){
+        if (array[i] > max){
+            max = array[i];
+        }
+    }
+    
+        for(i = 0; i < arrayMax; ++i){
+        array[i] = array[i] / max;
+        
+    }
+
+    for(i = 0; i < arrayMax; ++i){
+        printf("%0.2lf ", array[i]);
+    }
+   printf("\n");
+
+   return 0;
+}
