@@ -1,0 +1,22 @@
+#include <stdio.h>
+#include <math.h>
+
+int main(void) {
+	int userNum;
+
+scanf ("%d", &userNum);
+
+//use if statement for the input must be 11-100//
+    if ( userNum < 11 || userNum > 100){
+	   printf("Input must be 11-100\n");
+    }
+    else {
+	     while ( userNum % 11 != 0) {
+	   printf ("%d ", userNum);
+	   	 --userNum;
+	     }
+   printf ("%d \n", userNum);
+  }
+
+   return 0;
+}
