@@ -1,0 +1,27 @@
+// only got 6/10 //
+#include <stdio.h>
+
+int main(void) {
+
+char userInput[50];
+int size;
+char temp1;
+
+fgets(userInput, 50, stdin);
+size = strlen(userInput);
+
+char pali[size];
+strcpy(pali, userInput);
+
+for (int i = 0; i < (size / 2); ++i){
+   temp1 = pali[i];
+   pali[i] = pali[size - 1 - i];
+   pali[size - 1 - i] = temp1;}
+
+if (strcmp(userInput, pali) == 0){
+   printf("palindrome: %s\n", userInput);}
+else{
+   printf("not a palindrome: %s\n", userInput);}
+
+   return 0;
+}
