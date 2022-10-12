@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+double DrivingCost(double milesPerGallon, double dollarsPerGallon, double milesDriven) {
+   return milesDriven / milesPerGallon * dollarsPerGallon;
+}
+int main(void) {
+float miles;
+float dollars;
+
+scanf ("%f", &miles);
+scanf ("%f", &dollars);
+printf("%0.2f ", DrivingCost(miles, dollars, 10));
+printf("%0.2f ", DrivingCost(miles, dollars, 50));
+printf("%0.2f\n", DrivingCost(miles, dollars, 400));
+   return 0;
+}
