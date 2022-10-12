@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main(void) {
+   int userNum;
+   int userNumSquared;
+   
+   scanf("%d", &userNum);
+   
+   userNumSquared = userNum *userNum;   
+   
+   printf("%d\n", userNumSquared);   
+
+   return 0;
+}
