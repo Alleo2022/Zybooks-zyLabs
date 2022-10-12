@@ -1,0 +1,12 @@
+#include <stdio.h>
+
+int FeetToSteps(double userFeet) {
+   int step;
+   step = userFeet / 2.5;
+}
+int main(void) {
+   double feet;
+   scanf ("%lf", &feet);
+   printf("%d\n", FeetToSteps(feet));
+   return (0);
+}
