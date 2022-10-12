@@ -1,0 +1,44 @@
+#include <stdio.h> 
+
+int main() 
+{
+float weight1[10]; 
+
+float sum=0,max1,t; 
+
+for(int k = 0; k < 5; k++) 
+
+{
+
+printf("Enter weight %d:\n",k+1);
+
+scanf("%f",&weight1[k]); 
+
+}
+
+printf("You entered: ");
+max1=weight1[0];
+
+for(int k = 0; k < 5 ; k++)
+{
+sum=sum+weight1[k];
+if(max1 < weight1[k]) 
+{
+max1=weight1[k];
+}
+
+printf("%.2lf ",weight1[k]);
+
+}
+printf("\n");
+t=sum/5.0; 
+
+printf("\nTotal weight: %.2lf\n",sum); 
+
+printf("Average weight: %.2lf\n",t); 
+
+printf("Max weight: %.2lf\n",max1); 
+
+return 0;
+
+}
