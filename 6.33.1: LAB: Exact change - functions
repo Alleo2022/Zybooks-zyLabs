@@ -1,0 +1,54 @@
+#include <stdio.h>
+
+ #include<stdio.h>
+ void ExactChange(int userTotal, int coinVals[]){
+       coinVals[3] = userTotal/25; 
+       userTotal = userTotal - coinVals[3] * 25; 
+
+       coinVals[2] = userTotal/10; 
+       userTotal = userTotal - coinVals[2] * 10; 
+
+       coinVals[1] = userTotal/5; 
+       userTotal = userTotal - coinVals[1] * 5; 
+
+       coinVals[0] = userTotal; 
+ }
+ 
+ int main(void){
+    int c[] = {0,0,0,0};
+    int i;
+
+    scanf("%d", &i);
+
+    if (i == 0) {
+       printf("no change\n"); 
+    }
+    else { 
+       ExactChange(i, c);
+       if (c[0] == 1){
+          printf("%d penny\n", c[0]); 
+       }
+       if (c[0] > 1){
+          printf("%d pennies\n", c[0]);
+       }
+       if (c[1] == 1){
+          printf("%d nickel\n", c[1]);
+       }
+       if (c[1] > 1){ 
+          printf("%d nickels\n", c[1]); 
+       }
+       if (c[2] == 1){
+          printf("%d dime\n", c[2]);
+       }
+       if (c[2] > 1){
+          printf("%d dimes\n", c[2]);
+       }
+       if (c[3] == 1){
+          printf("%d quarter\n", c[3]);
+       }
+       if (c[3] > 1){
+          printf("%d quarters\n", c[3]);
+       }
+    }
+    return 0;
+ }
