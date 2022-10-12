@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main(void) {
+
+   /* Type your code here. */
+   double years;
+   double pounds;
+   double heartRate;
+   double minutes;
+   double calories;
+   
+   scanf ("%lf", &years);
+   scanf ("%lf", &pounds);
+   scanf ("%lf", &heartRate);
+   scanf ("%lf", &minutes);
+   
+   years = years * 0.2757;
+   pounds = pounds * 0.03295;
+   heartRate = heartRate * 1.0781;
+   minutes = minutes / 8.368;
+   
+   
+   calories = ( ((years + pounds + heartRate) - 75.4991 ) * (minutes));
+   
+   printf ("Calories: %0.2lf calories\n", calories);
+
+   return 0;
+}
