@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+int DaysInFeb(int userYear) {
+   
+  if (userYear % 4 == 0) {
+     
+       if (userYear % 100 == 0) {
+         if (userYear % 400 == 0) {
+            return 29;
+         }
+         else {
+            return 28;
+         }
+      }
+      else {
+      return 29;
+      }
+   }
+   else {
+      return 28;
+   }
+}
+int main(void) {
+
+   int year;
+  
+   scanf("%d",&year);
+  
+   printf("%d has %d days in February.\n",year, DaysInFeb(year));
+        
+return 0;
+}
