@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <math.h>
+
+int main(void) {
+
+   /* Type your code here. */
+   int red;
+   int green;
+   int blue;
+   
+
+scanf ("%d" , &red);
+scanf ("%d", &green);
+scanf ("%d", &blue);
+
+if (red < green && red < blue) {
+   green = green - red;
+   blue = blue - red;
+   red = 0;
+   printf ("%d %d %d\n", red, green, blue);
+}
+else if ( green < blue && green < red) {
+   red= red - green;
+   blue = blue - green;
+   green = 0;
+   printf ("%d %d %d\n", red, green, blue);
+}
+else if ( blue < red && blue < green){
+   red = red - blue;
+   green = green - blue;
+   blue = 0;
+   printf ("%d %d %d\n", red, green, blue);
+}
+else if (red > blue && red > green){
+   red = red - green;
+   blue = 0;
+   green = 0;
+   printf ("%d %d %d\n", red, green, blue);
+}
+else if (blue > red && blue > green){
+   blue = blue - red;
+   green = 0;
+   red = 0;
+   printf ("%d %d %d\n", red, green, blue);
+}
+else if (green > blue && green > red){
+   green = green - red;
+   red = 0;
+   blue = 0;
+   printf ("%d %d %d\n", red, green, blue);
+}
+else {
+   red = 0;
+   green = 0;
+   blue = 0;
+   printf ("%d %d %d\n", red, green, blue);
+}
+
+   return 0;
+}
