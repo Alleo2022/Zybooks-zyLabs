@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+int main(void) {
+   int userNum;
+   int userNum2;
+   
+   printf("Enter integer:\n");
+   scanf("%d", &userNum);
+   /* Type your code here. */
+   scanf("%d" , &userNum2);
+   printf("You entered: %d\n", userNum);
+   //Line break
+   printf("%d", userNum);
+   printf(" squared is");
+   printf(" %d\n" , userNum*userNum);
+   //Line break
+   printf("And %d", userNum);
+   printf(" cubed is");
+   printf(" %d!!\n", userNum*userNum*userNum);
+   // Part 2 
+   printf("Enter another integer:\n");
+   //Line break
+   printf( "%d", userNum);
+   printf(" +");
+   printf(" %d is", userNum2);
+   printf(" %d\n", userNum+userNum2);
+   //Line break
+   printf("%d", userNum);
+   printf(" *");
+   printf(" %d is", userNum2);
+   printf(" %d\n", userNum*userNum2);
+   
+   return 0;
+
+}
