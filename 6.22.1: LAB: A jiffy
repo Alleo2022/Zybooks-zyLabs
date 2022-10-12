@@ -1,0 +1,12 @@
+#include <stdio.h>
+
+double JiffiesToSeconds(double userJiffies) {
+   double second;
+   second = (userJiffies / 100);
+}
+int main(void) {
+   double jiffy;
+   scanf ("%lf", &jiffy);
+   printf ("%0.3lf\n", JiffiesToSeconds(jiffy));
+   return 0;
+}
