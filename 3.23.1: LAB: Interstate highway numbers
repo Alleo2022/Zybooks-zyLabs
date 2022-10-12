@@ -1,0 +1,37 @@
+// Only got 9/10 //
+
+#include <stdio.h>
+#include <math.h>
+
+int main(void) {
+   int highwayNumber;
+   
+   scanf("%d", &highwayNumber); 
+   int primary;
+   int aux;
+
+   if((highwayNumber > 0) && (highwayNumber < 100)){
+      primary = highwayNumber;
+   }
+   if((highwayNumber <= 0) || (highwayNumber > 999)){
+      printf("%d is not a valid interstate highway number.\n",highwayNumber) ;
+   }
+   else if((highwayNumber > 100)  && (highwayNumber <= 999 &&  highwayNumber != 0)){
+      aux = highwayNumber;
+      int test = aux % 100;
+         if(test % 2 == 0){
+            printf("I-%d is auxiliary, serving I-%d, going east/west.\n" , aux, test);
+         }
+         else if(test % 2 != 0){
+            printf("I-%d is auxiliary, serving I-%d, going north/south.\n", aux, test);
+         }
+   }
+   else if(primary % 2 == 0){
+      printf("I-%d is primary, going east/west.\n" , primary);
+   }
+   else if(primary % 2 != 0){
+      printf("I-%d is primary, going north/south.\n", primary);
+   }
+
+   return 0;
+}
