@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <math.h>
+
+int main(void) {
+
+int num;
+double sum = 0;
+
+scanf("%d", &num);
+
+double count = 0;
+int max = 0;
+
+   while(num >= 0)  {
+   sum+=num;
+   count++;
+
+      if(num>=max){
+      max = num;
+      }
+      scanf("%d", &num);
+   }
+
+   printf("%d %0.2lf\n", max, sum/count);  {
+   }
+   return 0;
+}
