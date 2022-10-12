@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+int main(void) {
+
+/* Type your code here. */
+   double carMPG;
+   double cost;
+   
+   scanf("%lf", &carMPG);
+   scanf ("%lf" , &cost);
+   
+   cost = cost * (20 / carMPG);
+   
+   printf ("%0.2lf" , cost);
+
+   cost = cost * (3.75 );
+   
+   printf (" %0.2lf", cost);
+   
+   scanf ("%lf", &cost);
+   
+   cost = cost * (6.6666);
+   
+   printf (" %0.2lf\n" , cost);
+
+   return 0;
+}
