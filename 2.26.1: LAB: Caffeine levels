@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main(void) {
+   double caffeineMg;  // "double" supports floating-point like 75.5, versus int for integers like 75.
+   
+   scanf("%lf", &caffeineMg);
+
+   /* Type your code here. */
+   caffeineMg = caffeineMg / 2;
+   printf ( "After 6 hours: %0.2lf mg\n" , caffeineMg);
+   
+   caffeineMg = caffeineMg / 2; 
+   printf ( "After 12 hours: %0.2lf mg\n", caffeineMg);
+   
+   caffeineMg = caffeineMg / 4;
+   printf ( "After 24 hours: %0.2lf mg\n" , caffeineMg);
+
+   return 0;
+}
