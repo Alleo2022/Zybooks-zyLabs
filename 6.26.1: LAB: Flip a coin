@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void CoinFlip(char* decisionString [50]) {
+   if (rand() % 2 == 0) {
+      strcpy (decisionString, "Tails");
+   }
+   else {
+      strcpy (decisionString, "Heads");
+   }
+   return;
+}
+
+int main(void) {
+   int numFlips;
+   char result[50];
+   
+   scanf ("%d", &numFlips);
+
+   srand(2);  /* Unique seed */
+   
+   for(size_t i = 0; i < numFlips; i++) {
+      CoinFlip(&result);
+      printf ("%s\n", result);
+   }
+   
+   return 0;
+}
