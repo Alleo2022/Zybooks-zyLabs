@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main(void) {
+
+char userInput[50];
+int i;
+int counter = 0;
+
+fgets(userInput, 50, stdin);
+
+   if ((ispunct(userInput[3]))) {
+      counter = counter + 1;
+   }
+   for (i = 0; i < strlen(userInput); i++) {
+      if (isalpha(userInput[i])) {
+         counter = counter + 1;
+      }
+   }
+
+   printf("%d\n", counter);
+
+   return 0;
+}
