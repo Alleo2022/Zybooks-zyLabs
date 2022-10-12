@@ -1,0 +1,22 @@
+int main(void) {
+   int arrayMax;
+   int array[50];    // Set of data specified by the user
+   int i = 0;
+    
+    scanf("%d", &arrayMax); 
+    
+        for(i = 0; i <= arrayMax; ++i){
+        scanf("%d", &array[i]);
+    }
+   
+       
+    for(i=0; i<arrayMax; i++){
+    
+       if (array[i] < array[arrayMax]){
+          printf("%d,", array[i]);
+       }
+        
+    }
+   printf("\n");
+   return 0;
+}
