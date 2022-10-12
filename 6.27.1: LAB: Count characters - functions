@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <string.h>
+
+   int CalcNumCharacters(char* userString, char userChar){
+      int result = 0, i;
+      for(i=0; userString[i] != '\0'; i++){
+         if(userString[i] ==userChar){
+            result++;
+         }
+      }
+      return result;
+   }
+
+
+int main(void) {
+
+   char userString[50];
+   char userChar, temp;
+   int result;
+
+   scanf("%c", &userChar);
+   scanf("%c", &temp);
+   scanf("%[^\n]%*c", userString);
+
+   result = CalcNumCharacters(userString, userChar);
+
+   if(result ==1){
+      printf("1 %c\n", userChar);
+   }
+   else{
+      printf("%d %c's\n", result, userChar);
+   }
+
+   return 0;
+}
