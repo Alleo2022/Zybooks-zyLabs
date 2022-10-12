@@ -1,0 +1,45 @@
+#include <stdio.h> 
+
+void GetUserValues( int userValues[], int numValues){ 
+   for(int i = 0; i < numValues; i++){
+      scanf("%d",&userValues[i]);
+      }
+      } 
+int IntsLessThanOrEqualToThreshold(int userValues[], int maxVal, int numValues, int resValues[]){ 
+     int i;
+     int j = 0;
+     int count = 0;
+     for(i = 0; i < numValues; ++i) {
+        if (userValues[i] <= maxVal) {
+           resValues[j] = userValues[i];
+           ++j;
+           ++count;
+        }
+     }
+
+     return count;
+}
+
+int main(void){
+
+   int numVals;
+
+   scanf("%d", &numVals);
+
+   int array[numVals];
+   int array2[numVals];
+   int limit;
+   int length;
+
+   GetUserValues(array, numVals);
+   scanf("%d", &limit);
+
+   length = IntsLessThanOrEqualToThreshold(array, limit, numVals, array2);
+
+   for(int i = 0; i < length; ++i) {
+      printf("%d ", array2[i]);
+   }
+   printf("\n"); 
+
+   return 0;
+}
