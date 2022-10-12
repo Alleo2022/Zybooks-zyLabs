@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+double KiloToPounds(double kilos) {
+   return (kilos * 2.204);
+}
+
+int main() {
+   double kilos;
+   double pounds;
+   
+   scanf("%lf", &kilos);
+   
+   pounds = KiloToPounds(kilos);
+   printf("%f lbs\n", pounds);
+   
+   return 0;
+}
