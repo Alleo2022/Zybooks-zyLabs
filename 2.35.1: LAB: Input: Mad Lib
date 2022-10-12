@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main(void) {
+   char firstName[50];
+   char genericLocation[50];
+   int  wholeNumber;
+   char pluralNoun[50];
+   
+   /* Type your code here. */
+   
+   scanf ("%s", &firstName);
+   scanf ("%s" , &genericLocation);
+   scanf ("%d", &wholeNumber);
+   scanf ("%s", &pluralNoun);
+   
+   printf("%s went to %s to buy %d different types of %s.\n", firstName, genericLocation, wholeNumber, pluralNoun);
+
+   return 0;
+}
