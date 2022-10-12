@@ -1,0 +1,123 @@
+// main.c
+
+#include <stdio.h>
+#include <string.h>
+
+#include "BankAccount.h"
+
+int main() {
+   BankAccount account = InitBankAccount("Mickey", 500.00, 1000.00);
+   char name[20];
+   
+   account = SetChecking(500, account);
+   account = SetSavings(500, account);
+   account = WithdrawSavings(100, account);
+   account = WithdrawChecking(100, account);
+   account = TransferToSavings(300, account);
+   
+   GetName(name, account);
+   printf("%s\n", name);
+   printf("$%.2f\n", GetChecking(account));
+   printf("$%.2f\n", GetSavings(account));
+
+   return 0;
+}
+
+// BankAccount.h
+
+#ifndef BANKACCOUNT_H_ 
+#define BANKACCOUNT_H_
+
+typedef struct BankAccount_struct {
+   char name[20];
+   double checkings;
+   double savings;
+} BankAccount;
+
+BankAccount InitBankAccount();
+BankAccount SetName(char* newName, BankAccount account);
+void GetName(char* customerName, BankAccount account);
+BankAccount SetChecking(double amt, BankAccount account);
+double GetChecking(BankAccount account);
+BankAccount SetSavings(double amt, BankAccount account);
+double GetSavings(BankAccount account);
+BankAccount DepositChecking(double amt, BankAccount account);
+BankAccount DepositSavings(double amt, BankAccount account);
+BankAccount WithdrawChecking(double amt, BankAccount account);
+BankAccount WithdrawSavings(double amt, BankAccount account);
+BankAccount TransferToSavings(double amt, BankAccount account);
+
+#endif
+
+// BankAccount.c
+
+#include <stdio.h>
+#include <string.h>
+
+#include "BankAccount.h"
+
+BankAccount InitBankAccount(char* newName, double amt1, double amt2){
+   BankAccount newb;
+   SetName(newName, newb);
+   strcpy(newb.name,newName);
+   newb = SetSavings(amt2, newb);
+   newb = SetChecking(amt1, newb);
+
+   return(newb);
+   }
+
+   BankAccount SetName(char* newName, BankAccount account){
+   strcpy(account.name, newName);
+      return(account);
+      }
+   void GetName(char* customerName, BankAccount account){
+      strcpy(customerName, account.name);
+      }
+   BankAccount SetChecking(double amt, BankAccount account){
+      account.checkings = amt;
+      return(account);
+      }
+   double GetChecking(BankAccount account){
+      return(account.checkings);
+      }
+   double GetSavings(BankAccount account){
+         return(account.savings);
+         }
+   BankAccount SetSavings(double amt, BankAccount account){
+      account.savings = amt;
+      return(account);      
+      }
+      
+   BankAccount DepositChecking(double amt, BankAccount account){
+      if (amt <= 0){
+         return account;}
+         account.checkings = account.checkings + amt;
+      return account;
+      }
+      
+   BankAccount DepositSavings(double amt, BankAccount account){
+      if (amt <= 0){
+         return account;}      
+      account.savings = account.savings + amt;
+      return account;
+      }
+      
+   BankAccount WithdrawChecking(double amt, BankAccount account){
+      if (amt <= 0){
+         return account;}       
+      account.checkings = account.checkings - amt;
+      return account;
+      }
+      
+   BankAccount WithdrawSavings(double amt, BankAccount account){
+       if (amt <= 0){
+         return account;} 
+      account.savings = account.savings - amt;
+      return account;
+      }
+      
+   BankAccount TransferToSavings(double amt, BankAccount account){
+      account.savings = account.savings + amt;
+      account.checkings = account.checkings - amt;
+      return account;
+    } 
