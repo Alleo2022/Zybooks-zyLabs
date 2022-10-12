@@ -1,0 +1,38 @@
+void IntToReverseBinary(int integerValue, char binaryValue[]) {
+    int i=0;
+    while(integerValue!=0) //loop runs until integerValue equals to 0
+       {
+         binaryValue[i++] = (integerValue%2)+'0';
+         integerValue = integerValue/2;
+       }
+       binaryValue[i]='\0'; //placing null character at end of binaryValue
+}
+void StringReverse(char binaryValue[], char reversedString[]) //function definition
+{
+    int i,j,size=0;
+    i=0;
+    while(binaryValue[i++]!='\0') //loop to find the size of binaryValue array
+     size++;
+    for(i=0,j=size-1;j>=0;j--,i++) //loop to reverse the binaryValue and assign it to reversedString
+     reversedString[i]= binaryValue[j];
+    reversedString[i]='\0'; //placing null character at end of reversedString
+}
+
+int main(void) {
+
+   int n, size=0, i;
+   char binaryValue[10], reversedString[10];
+
+    scanf("%d",&n);
+    IntToReverseBinary(n,binaryValue);
+
+    StringReverse(binaryValue,reversedString); 
+    i=0;
+    while(reversedString[i++]!='\0') 
+     size++;
+    for(i=0;i<size;i++) 
+     printf("%c",reversedString[i]);
+     printf("\n");
+
+   return 0;
+}
