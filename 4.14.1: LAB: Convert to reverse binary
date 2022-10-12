@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main(void) {
+
+int posVar;
+
+scanf ("%d", &posVar);
+
+  while (posVar > 0) {
+
+     printf("%d", posVar%2);
+     posVar = posVar / 2;
+  }
+ printf ("\n");
+
+   return 0;
+}
