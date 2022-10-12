@@ -1,0 +1,75 @@
+// main.c
+
+#include <stdio.h>
+
+#include "VendingMachine.h"
+
+int main() {
+   int drinks;
+   int bottles;
+   
+   scanf("%d", &drinks);
+   scanf("%d", &bottles);
+
+   VendingMachine vm1 = InitVendingMachine();
+   
+   GetInventory(vm1);
+   vm1 =  Purchase(drinks, vm1);
+   vm1 = Restock(bottles, vm1);
+    
+   Report(vm1);
+
+   return 0;
+}
+
+// VendingMachine.h
+
+#ifndef VENDING_MACHINE_H
+#define VENDING_MACHINE_H
+
+typedef struct VendingMachine_struct {
+   int bottles;
+} VendingMachine;
+
+VendingMachine InitVendingMachine();
+VendingMachine Purchase(int amount, VendingMachine vm);
+VendingMachine Restock(int amount, VendingMachine vm);
+int GetInventory(VendingMachine vm);
+void Report(VendingMachine vm);
+
+#endif
+
+// VendingMachine.c
+
+#include <stdio.h>
+#include <string.h>
+
+#include "VendingMachine.h"
+
+VendingMachine InitVendingMachine(){
+   VendingMachine newVM;
+   
+   newVM.bottles = 20;
+   
+   return newVM;
+}
+
+VendingMachine Purchase(int amount, VendingMachine vm){
+   vm.bottles = vm.bottles - amount;  
+   
+   return vm;
+}
+
+VendingMachine Restock(int amount, VendingMachine vm){
+   vm.bottles = vm.bottles + amount;
+   
+   return vm;
+}
+
+int GetInventory(VendingMachine vm){
+   return vm.bottles;
+}
+
+void Report(VendingMachine vm){
+   printf("Inventory: %d bottles\n", vm.bottles);
+}
