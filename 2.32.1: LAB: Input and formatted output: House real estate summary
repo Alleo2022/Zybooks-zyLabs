@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main(void) {
+   int currentPrice;
+   int lastMonthsPrice;
+   double monthlyMortgage;
+   double priceChange;
+   
+   scanf("%d", &currentPrice);
+   scanf("%d", &lastMonthsPrice);
+   
+   priceChange = ( currentPrice - lastMonthsPrice);
+   monthlyMortgage = (currentPrice * 0.051) / 12;
+   
+   
+   /* Type your code here. */
+   printf ( "This house is $%d. The change is $%0.0lf since last month.\n", currentPrice, priceChange);
+   printf( "The estimated monthly mortgage is $%lf.\n", monthlyMortgage);
+
+   return 0;
+}
