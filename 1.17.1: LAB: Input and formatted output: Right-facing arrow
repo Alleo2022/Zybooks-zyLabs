@@ -1,0 +1,39 @@
+#include <stdio.h>
+
+int main(void) {
+   int baseInt;
+   int headInt;
+   
+  /* Type your code here. */
+  scanf("%d", &baseInt);
+  scanf("%d", &headInt);
+  printf("    %d\n", headInt);
+  printf("    %d", headInt);
+  printf("%d\n", headInt);
+  printf("%d", baseInt);
+  printf("%d", baseInt);
+  printf("%d", baseInt);
+  printf("%d", baseInt);
+  printf("%d", headInt);
+  printf("%d", headInt);
+  printf("%d\n", headInt);
+  printf("%d", baseInt);
+  printf("%d", baseInt);
+  printf("%d", baseInt);
+  printf("%d", baseInt);
+  printf("%d", headInt);
+  printf("%d", headInt);
+  printf("%d", headInt);
+  printf("%d\n", headInt);
+  printf("%d", baseInt);
+  printf("%d", baseInt);
+  printf("%d", baseInt);
+  printf("%d", baseInt);
+  printf("%d", headInt);
+  printf("%d", headInt);
+  printf("%d\n", headInt);
+  printf("    %d", headInt);
+  printf("%d\n", headInt);
+  printf("    %d\n", headInt);
+   return 0;
+}
