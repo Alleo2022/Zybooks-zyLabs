@@ -1,0 +1,74 @@
+// main.c
+
+#include <stdio.h>
+#include <string.h>
+
+#include "Student.h"
+
+int main() {
+    Student student = InitStudent();
+    char name[20];
+    
+    GetName(name, student);
+    printf("%s/%.1lf\n", name, GetGPA(student));
+
+    student = SetName("Felix", student);
+    student = SetGPA(3.7, student);
+    GetName(name, student);
+    printf("%s/%.1lf\n", name, GetGPA(student));
+
+	return 0;
+}
+
+// Student.h
+
+#ifndef STUDENT_H_
+#define STUDENT_H_
+
+typedef struct Student_struct {
+   char name[20];
+   double GPA;
+} Student;
+
+Student InitStudent();
+Student SetName(char *name, Student s);
+Student SetGPA(double gpa, Student s);
+void GetName(char* studentName, Student s);
+double GetGPA(Student s);
+
+#endif
+
+// Student.c
+
+#include <stdio.h>
+#include <string.h>
+
+#include "Student.h"
+
+Student InitStudent(char* newName, double gpa1){
+   Student news;
+   newName = "Louie";
+   news = SetName(newName, news);
+   gpa1 = 1.0;
+   news = SetGPA(gpa1, news);
+   
+   return(news);
+}
+
+Student SetName(char *name, Student s) {
+   strcpy(s.name, name);
+   return(s);
+}
+
+Student SetGPA(double gpa, Student s) {
+   s.GPA = gpa;
+   return(s);
+}
+
+void GetName(char* studentName, Student s) {
+   strcpy(studentName, s.name);
+}
+
+double GetGPA(Student s) {
+   return(s.GPA);
+}
