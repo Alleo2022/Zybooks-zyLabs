@@ -1,0 +1,28 @@
+#include <stdio.h>
+int GetMaxInt(int listInts[], int numVals) {
+
+int ans = listInts[0],i;
+ 
+   for(i=1;i<numVals;i++)
+   if(listInts[i] > ans) ans = listInts[i];
+   return ans;
+   }
+
+int main() { 
+      int arr[20],n,i, max; 
+
+      scanf("%d", &n); 
+
+      for(i=0;i<n;i++)
+      scanf("%d", &arr[i]); 
+
+      max = GetMaxInt(arr,n);
+
+      for(i=0;i<n;i++)
+      arr[i] = max - arr[i];
+ 
+      for(i=0;i<n;i++) 
+      printf("%d ", arr[i]); 
+      printf("\n");
+   return 0; 
+}
