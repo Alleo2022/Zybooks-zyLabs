@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main(void) {
+
+   int max, min, i;
+   int count;
+   scanf("%d", &count);
+   int array[count];
+
+   for(i=0; i<count; i++){
+      scanf("%d", &array[i]);
+   }
+   scanf("%d", &min);
+   scanf("%d", &max);
+
+   for(i=0; i<count; i++){
+      if((array[i]>=min) && (array[i]<=max)){
+         printf("%d,", array[i]);
+      }
+   }
+   printf("\n");
+
+
+   return 0;
+}
