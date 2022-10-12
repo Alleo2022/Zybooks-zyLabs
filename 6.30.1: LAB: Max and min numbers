@@ -1,0 +1,55 @@
+#include <stdio.h>
+
+int MaxNumber(int num1, int num2, int num3, int num4) {
+   int maxNum;
+   if ((num1 > num2) && (num1 > num3) && (num1 > num4)) {
+      maxNum = num1;
+   }
+   else if ((num2 > num1) && (num2 > num3) && (num2 > num4)) {
+      maxNum = num2;
+   }
+   else if ((num3 > num2) && (num3 > num1) && (num3 > num4)) {
+      maxNum = num3;
+   }
+   else if ((num4 > num2) && (num4 > num1) && (num4 > num3)) {
+      maxNum = num4;
+   }
+   else {
+      maxNum = num4;
+   }
+   return maxNum;
+}
+int MinNumber(int num1, int num2, int num3, int num4) {
+   int minNum;
+   if ((num1 < num2) && (num1 < num3) && (num1 < num4)) {
+      minNum = num1;
+   }
+   else if ((num2 < num1) && (num2 < num3) && (num2 < num4)) {
+      minNum = num2;
+   }
+   else if ((num3 < num2) && (num3 < num1) && (num3 < num4)) {
+      minNum = num3;
+   }
+   else if ((num4 < num2) && (num4 < num1) && (num4 < num3)){
+      minNum = num4;
+   }
+   else {
+      minNum = num1;
+   }
+
+   return minNum;
+}
+
+int main(void) {
+   int num1, num2, num3, num4;
+
+   scanf("%d", &num1);
+   scanf("%d", &num2);
+   scanf("%d", &num3);
+   scanf("%d", &num4);
+
+   printf("Maximum is %d\n", MaxNumber(num1, num2, num3, num4));
+   printf("Minimum is %d\n", MinNumber(num1, num2, num3, num4));
+
+   return 0;
+}
