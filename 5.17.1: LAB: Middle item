@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main(void) {
+   const int NUM_ELEMENTS = 9;
+   int userValues[NUM_ELEMENTS];    // Set of data specified by the user
+
+int middle;
+int userNum;
+int l = 0;
+
+scanf("%d", &userNum);
+
+for(int i = 0; i < NUM_ELEMENTS + 1; i++) {
+   if (userNum > 0) {
+      userValues[i] = userNum;
+      scanf ("%d", &userNum);
+   l++; 
+   }
+}   
+if (l > 9) {
+  printf("Too many numbers\n");
+}
+else {
+   middle = userValues[l / 2];
+   printf("Middle item: %d\n", middle);
+}
+   return 0;
+}
