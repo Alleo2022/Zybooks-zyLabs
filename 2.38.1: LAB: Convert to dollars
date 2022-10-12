@@ -1,0 +1,20 @@
+#include <stdio.h>
+
+int main() {
+   double quarters;
+   double dimes;
+   double nickels;
+   double pennies;
+   double dollars;
+
+   /* Type your code here. */
+   scanf ("%lf", &quarters);
+   scanf ("%lf", &dimes);
+   scanf ("%lf", &nickels);
+   scanf ("%lf", &pennies);
+   
+   dollars = (quarters * 0.25) + (dimes * 0.10) + (nickels * 0.05) + (pennies * 0.01);
+
+   printf("Amount: $%0.2lf\n", dollars);
+   return 0;
+}
