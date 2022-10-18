@@ -1,0 +1,90 @@
+#include <stdio.h>
+#include <string.h>
+
+typedef struct ContactNode_struct {
+   char contactName[100];
+   char contactPhoneNum[100];
+   struct ContactNode_struct *nextContactNodePtr;
+
+} ContactNode;
+
+void InitializeContactNode(ContactNode*contactNodePtr, char name[], char phoneNumber[]) {
+   strcpy(contactNodePtr->contactName, name);
+   strcpy(contactNodePtr->contactPhoneNum, phoneNumber);
+   contactNodePtr->nextContactNodePtr = NULL;
+}
+
+char *GetName(ContactNode*contactNodePtr) {
+   return contactNodePtr->contactName;
+}
+
+char *GetPhoneNumber(ContactNode*contactNodePtr) {
+   return contactNodePtr->contactPhoneNum;
+}
+
+void InsertAfter(ContactNode*contactNodePtr, ContactNode*newContactNodePtr) {
+   newContactNodePtr->nextContactNodePtr = contactNodePtr->nextContactNodePtr;
+   contactNodePtr->nextContactNodePtr = newContactNodePtr;
+}
+
+ContactNode*GetNext(ContactNode*contactNodePtr) {
+   return contactNodePtr->nextContactNodePtr;
+}
+
+void PrintContactNode(ContactNode*contactNodePtr) {
+   printf("Name: %s\n", contactNodePtr->contactName);
+   printf("Phone number: %s\n", contactNodePtr->contactPhoneNum);
+   printf("\n");
+}
+
+int main() {
+   ContactNode contactEntry1, contactEntry2, contactEntry3;
+
+   char fullname[100];
+   char phonenumber[100];
+
+   fgets(fullname, 100, stdin); 
+   fullname[strlen(fullname)-1] = '\0'; 
+
+   fgets(phonenumber, 100, stdin);
+   phonenumber[strlen(phonenumber)-1] = '\0';
+
+   InitializeContactNode(&contactEntry1, fullname, phonenumber);
+
+
+   fgets(fullname, 100, stdin);
+   fullname[strlen(fullname)-1] = '\0';
+
+   fgets(phonenumber, 100, stdin);
+   phonenumber[strlen(phonenumber)-1] = '\0';
+
+   InitializeContactNode(&contactEntry2, fullname, phonenumber);
+   InsertAfter(&contactEntry1, &contactEntry2);
+
+
+   fgets(fullname, 100, stdin);
+   fullname[strlen(fullname)-1] = '\0';
+
+   fgets(phonenumber, 100, stdin);
+   phonenumber[strlen(phonenumber)-1] = '\0';
+
+   InitializeContactNode(&contactEntry3, fullname, phonenumber);
+   InsertAfter(&contactEntry2, &contactEntry3);
+
+
+   printf("Person 1: %s, %s\n", GetName(&contactEntry1), GetPhoneNumber(&contactEntry1));
+   printf("Person 2: %s, %s\n", GetName(&contactEntry2), GetPhoneNumber(&contactEntry2));
+   printf("Person 3: %s, %s\n", GetName(&contactEntry3), GetPhoneNumber(&contactEntry3));
+
+
+   printf("\nCONTACT LIST\n");
+   ContactNode*currentContactNodePtr = &contactEntry1;
+   
+   while (currentContactNodePtr != NULL) {
+      PrintContactNode(currentContactNodePtr);
+      currentContactNodePtr = GetNext(currentContactNodePtr);
+   }
+
+   return 0;
+
+}
