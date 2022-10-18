@@ -1,0 +1,87 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void PrintArray(int* array, int size) {
+   for (int j = 0; j < size; ++j) {
+      printf("%d ", array[j]);
+   }
+}
+
+// Return the first n Fibonacci numbers
+// fibonacci(0) = 0, fibonacci(1) = 1, fibonacci(2) = 1
+// Ex: n = 5, seq = 0 1 1 2 3
+int* Fibonacci(int n) {
+   int* seq;
+   int j;
+
+ seq = (int*)malloc(n*sizeof(int));
+ int a = 0, b = 1, temp;
+ seq[0] = a;
+ seq[1] = b;
+ for (j = 2; j < n; j++) {
+    temp = a + b;
+    seq[j] = temp;
+    a = b;
+    b = temp;
+ }
+
+   return seq;
+}
+
+// Return sequence of squares for 1..n (inclusive)
+// Ex: sqrn = 3, seq = 1 4 9
+int* Squares(int n) {
+   int* seq;
+
+   seq = (int*) malloc(n* sizeof(int));
+   for ( int i= 1; i < n + 1; i++) {
+      seq[i-1] = i*i;
+   }
+
+   return seq;
+}
+
+// Return an array that is a copy of array1 followed by
+// the elements of array2
+int* Concatenate(int* array1, int size1, int* array2, int size2) {
+   int j;
+   int* seq;
+
+   int n = size1 + size2;
+   seq = (int*)malloc(n*sizeof(int));
+   for (int i = 0; i< size1; i++) {
+      seq[i] = array1[i];
+   }
+   for (j = size1; j< size1+ size2; j++) {
+      seq[j] = array2[j- size1];
+   }
+
+   return seq;
+}
+
+int main(void) {
+
+   int fibn;            // seq of first fibn Fibonacci numbers
+                        // Ex: fibn = 5, seq = 0 1 1 2 3
+   int sqrn;            // number of squares starting with 1
+                        // Ex: sqrn = 3, seq = 1 4 9
+   scanf("%d %d", &fibn, &sqrn);
+
+   int* fibs;
+   int* sqrs;
+   int* conc;
+
+   fibs = Fibonacci(fibn);
+   PrintArray(fibs, fibn);
+   printf("\n");
+
+   sqrs = Squares(sqrn);
+   PrintArray(sqrs, sqrn);
+   printf("\n");
+
+   conc = Concatenate(fibs, fibn, sqrs, sqrn);
+   PrintArray(conc, fibn + sqrn);
+   printf("\n");
+
+   return 0;
+}
