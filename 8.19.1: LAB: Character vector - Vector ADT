@@ -1,4 +1,7 @@
-//main.c
+////////////////////////////////////////////////////////
+
+//main.c//
+
 #include <stdio.h>
 #include "vector.h"
 
@@ -64,7 +67,10 @@ vector_destroy(&v);
   return 0;
 }
 
-//vector.h
+////////////////////////////////////////////////////////
+
+//vector.h//
+
 // TODO: Modify the code so that the vector holds characters instead of integers -- a flexible string
 
 #ifndef VECTOR_H
@@ -112,7 +118,10 @@ void vector_print(vector* v);
 
 #endif
 
-//vector.c
+////////////////////////////////////////////////////////
+
+//vector.c//
+
 // TODO: Modify the code so that the vector holds characters instead of integers -- a flexible string
 
 #include <stdio.h>
