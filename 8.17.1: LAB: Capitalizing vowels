@@ -1,0 +1,52 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+char* CapVowels(char* original) {
+int stringLength = strlen(original);
+
+char* resultStr = malloc(sizeof(char));
+
+    strcpy(resultStr, original);
+
+    int marker[5] = {0};
+    for(int i = 0; i < stringLength; i++){
+        if(original[i] == 'a' && marker[0] == 0){
+            marker[0] = 1;
+            resultStr[i] = 'A';
+        }
+        else if(original[i] == 'e' && marker[1] == 0){
+            marker[1] = 1;
+            resultStr[i] = 'E';
+        }
+        else if(original[i] == 'i' && marker[2] == 0){
+            marker[2] = 1;
+            resultStr[i] = 'I';
+        }
+        else if(original[i] == 'o' && marker[3] == 0){
+            marker[3] = 1;
+            resultStr[i] = 'O';
+        }
+        else if(original[i] == 'u' && marker[4] == 0){
+            marker[4] = 1;
+            resultStr[i] = 'U';
+        }
+    }
+
+    return resultStr;
+}
+int main(void) {
+   char userCaption[50];
+   char* resultStr;
+   scanf("%s", userCaption);
+
+   resultStr = CapVowels(userCaption);
+
+   printf("Original: %s\n", userCaption);
+   printf("Modified: %s\n", resultStr);
+   
+   // Always free dynamically allocated memory when no longer needed
+  free(resultStr);
+   
+   return 0;
+}
