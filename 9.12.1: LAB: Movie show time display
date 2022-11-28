@@ -1,0 +1,93 @@
+#include <string.h> 
+#include <stdio.h> 
+#include <stdlib.h>
+
+// main function
+int main() {
+const int MAX_TITLE_CHARS = 44; // Maximum length of movie titles
+const int LINE_LIMIT = 100; // Maximum length of each line in the text file
+char line[LINE_LIMIT];
+char inputFileName[25];
+// declare and initialize an empty movie_name variable
+char movie_name[MAX_TITLE_CHARS];
+movie_name[0] = '\0';
+// strcpy(movie, "");
+int x = 0;
+
+// get the name of the input file from the user
+scanf("%s", inputFileName);
+// open the input file for reading
+FILE* fptr = fopen(inputFileName, "r");
+// if the fle is not opened properly
+if (!fptr) {
+// print an error message & exit
+printf("Error opening the file!\n");
+exit(1);
+}
+
+// read each movie record from the input file
+while (fgets(line, LINE_LIMIT, fptr)) {
+// variables to store the data read from the file
+char title[LINE_LIMIT], movie_title[MAX_TITLE_CHARS], show_time[6], rating[6];
+// variables for looping purpose
+int i, j;
+
+// firstly, get the movie's showtime
+// the showtime is the part that occurs right before the first comma in the line
+for (i = 0, j = 0; line[i] != ','; i++, j++)
+show_time[j] = line[i];
+// append a null character to the end the showtime
+show_time[j] = '\0';
+
+// secondly, get the movie's title
+// the title is the part that occurs between the first and second comma in the line
+for (i = i + 1, j = 0; line[i] != ','; i++, j++)
+title[j] = line[i];
+// append a null character to the end of the title
+title[j] = '\0';
+// if the title has more than 44 characters
+if(strlen(title) >= 44)
+// only the first 44 characters from the title as the movie_title
+strncpy(movie_title, title, 44);
+// else copy te whole title as the movie_title
+
+
+else
+strcpy(movie_title, title);
+
+// lastly get the movie's rating
+// the rating is the part that occurs after the second comma in the line
+for (i = i + 1, j = 0; i < strlen(line); i++, j++)
+rating[j] = line[i];
+// if there is a new line character at the end
+if (rating[j - 1] == '\n')
+// then replace it with a null character
+rating[j - 1] = '\0';
+// else append a null character at the end
+else
+rating[j] = '\0';
+
+// if the current movie's title matches the previous record's title
+if (strcmp(movie_name, movie_title) == 0) {
+// append the showtime of the current movie to the end of the
+// previous record's output separated by a space
+printf(" %s", show_time);
+}
+
+else {
+x = x + 1;
+if (x > 1) {
+printf("\n");
+}
+//reassign the movie_name to the current movie_title for further checkings
+strcpy(movie_name, movie_title);
+// display the movie's title, rating & showtime on a new line
+printf("%-44s | %5s | %s", movie_name, rating, show_time);
+}
+}
+printf("\n");
+// close the input file pointer
+fclose(fptr);
+
+return 0;
+}
