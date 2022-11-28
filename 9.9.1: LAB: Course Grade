@@ -1,0 +1,64 @@
+#include <stdio.h>
+
+int main(void) {
+
+   char first[25];
+   char last[25];
+   char fileName[100];
+   char grade;
+   int midterm1;
+   int midterm2;
+   int final;
+   int count = 0;
+   double studentAvg;
+   double totalTerm1 = 0;
+   double totalTerm2 = 0;
+   double totalFinal = 0;
+
+
+   /* TODO: Read a file name from the user and read the tsv file here. */
+   
+   scanf("%s",fileName);
+
+    FILE *fp = fopen(fileName,"r");
+    FILE *out = fopen("report.txt","w");
+    
+    while (fscanf(fp, "%s", last) != EOF) {
+       fscanf(fp, "%s %d %d %d", first, &midterm1, &midterm2, &final);
+       
+       totalTerm1 += midterm1;
+       totalTerm2 += midterm2;
+       totalFinal += final;
+       ++count;
+       
+       studentAvg = (midterm1 + midterm2 + final) / 3;
+       
+      
+      if (studentAvg >= 90) {             // 90% and up = A letter grade
+	      grade = 'A';
+	   }
+	   else if ((studentAvg >= 80)) {        // 80% and up = B letter grade
+		  grade = 'B';
+	   }
+	   else if ((studentAvg >= 70)){        // 70% and up = C letter grade
+		  grade = 'C';
+	   }
+	   else if ((studentAvg >= 60)){        // 60% and up = D letter grade
+		  grade = 'D';
+	   }
+	   else if ((studentAvg < 60)) {        // 60% and up = D letter grade
+		  grade = 'F';
+	   }
+	   else {
+	      grade = 'M'; // Grade is missing
+	   }
+	   fprintf(out, "%s\t%s\t%d\t%d\t%d\t%c\n", last, first, midterm1, midterm2, final, grade);
+      }
+      totalTerm1 /= count;
+      totalTerm2 /= count;
+      totalFinal /= count;
+      
+   fprintf(out,"\nAverages: midterm1 %.2lf, midterm2 %.2lf, final %.2lf\n",totalTerm1,totalTerm2,totalFinal);
+         fclose(fp);
+   return 0;
+}
