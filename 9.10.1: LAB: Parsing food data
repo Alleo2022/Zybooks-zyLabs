@@ -1,0 +1,82 @@
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+    const int MAX_LINES = 25; // Maximum number of lines in the input text file
+    const int MAX_STRING_LENGTH = 100; // Maximum number of characters in each column of the input text file
+    const int MAX_LINE_LENGTH = 200; // Maximum number of characters in each line of the input text file
+
+    // Declare 4 string arrays to store the 4 columns from the input text file
+    char category[MAX_LINES][MAX_STRING_LENGTH];
+    char foodName[MAX_LINES][MAX_STRING_LENGTH];
+    char description[MAX_LINES][MAX_STRING_LENGTH];
+    char availability[MAX_LINES][MAX_STRING_LENGTH];
+
+    char txtFile[20];
+    scanf("%s%*c",txtFile);
+
+    FILE *fp = fopen(txtFile,"r");
+
+    if(fp) {
+
+      char line[MAX_STRING_LENGTH];
+
+      int n=0;
+      int i;
+      int k;
+      
+         while(fgets(line,MAX_LINE_LENGTH,fp)!=NULL) {
+            i=0;
+            k=0;
+
+            while(line[i]!='\t') {
+                category[n][k] = line[i];
+                k++;
+                i++;
+            }
+
+            category[n][k]='\0';
+            i++;
+            k=0;
+
+            while(line[i]!='\t') {
+
+                foodName[n][k] = line[i];
+                k++,i++;
+            }
+            
+            foodName[n][k]='\0';
+            i++;
+            k=0;
+
+            while(line[i]!='\t') {
+                description[n][k] = line[i];
+                k++;
+                i++;
+            }
+            description[n][k]='\0';
+            i++;
+            k=0;
+
+            while(line[i]!='\n') {
+                availability[n][k] = line[i];
+                k++,i++;
+            }
+            availability[n][k]='\0';
+            n++;
+        }
+
+        for(int i=0;i<n;i++) {
+            if(strcmp(availability[i],"Available")==0) {
+                printf("%s (%s) -- %s\n",foodName[i],category[i],description[i]);
+            }
+        }
+
+        fclose(fp);
+    }
+    else {
+        printf("Error! File not found!");
+    }
+
+    return 0;
+}
