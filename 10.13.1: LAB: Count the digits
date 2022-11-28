@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int DigitCount(int num) {
+   int count = 0;
+   
+   if (num == 0) {
+      return 1;
+   }
+   
+   while (num > 0) {
+      ++count;
+      num = (num / 10);
+   }
+   
+   return count;
+}
+
+int main(void) {
+   int num;
+   int digits;
+
+   scanf("%d", &num); 
+   digits = DigitCount(num);
+   printf("%d", digits);
+   return 0;
+}
