@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+int main(void) {
+  int NUM_CHARACTERS = 26; // Maximum number of letters
+  int MAX_SYNONYMS = 10; // Maximum number of synonyms per starting letter
+  int MAX_WORD_SIZE = 30; // Maximum length of the input word
+  int counts[NUM_CHARACTERS];
+  int n;
+  char * synonyms[NUM_CHARACTERS][MAX_SYNONYMS]; // Declare 2D array of string pointers for all synonyms
+
+  // Initialize the first column of the 2D array
+  for (n = 0; n < NUM_CHARACTERS; n++) {
+    synonyms[n][0] = NULL;
+    counts[n] = 0;
+  }
+
+   /* Type your code here. */
+   char input_word[MAX_WORD_SIZE];
+   char filename[MAX_WORD_SIZE + 4];
+   char letter, word[MAX_WORD_SIZE];
+   int length, index;
+   scanf("%s %c", input_word, & letter);
+   strcpy(filename, input_word);
+   strcat(filename, ".txt");
+
+   FILE* file = fopen(filename, "r");
+   if (file != NULL) {
+      while (fscanf(file, "%s", word) != EOF) {
+            length = strlen(word);
+            index = (int) word[0] - 97;
+            synonyms[index][counts[index]] = (char*) malloc((length + 1) * sizeof(char));
+
+            strcpy(synonyms[index][counts[index]], word);
+            counts[index]++;
+      }
+      fclose(file);
+      index = (int) letter - 97;
+
+      if (counts[index] == 0) {
+         printf("No synonyms for %s begin with %c.\n", input_word, letter);
+      } 
+
+      else {
+         for (n = 0; n < counts[index]; n++) {
+            printf("%s\n", synonyms[index][n]);
+         }
+      }
+
+      for (n = 0; n < NUM_CHARACTERS; n++) {
+         for (index = 0; index < counts[n]; index++) {
+            free(synonyms[n][index]);
+         }
+      }
+   }
+   else {
+      printf("File %s does not exist !!!\n", filename);
+   }
+
+   return 0;
+}
